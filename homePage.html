@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phola Sparkle Car Wash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      color: #222;
+      background: #f4f4f4;
+    }
+    header {
+      background: url("maxresdefault.jpg") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+    }
+    header .content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: #00a0e3;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover {
+      background: #007bb0;
+    }
+    nav {
+      background: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav .logo {
+      font-weight: 800;
+      color: #00a0e3;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 6px 8px;
+      border-radius: 3px;
+      transition: background 0.15s, color 0.15s;
+    }
+    nav a:hover {
+      background: #00a0e3;
+      color: #fff;
+    }
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px 40px;
+    }
+    section {
+      margin-bottom: 50px;
+      background: #fff;
+      border-radius: 6px;
+      padding: 25px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    section h2 {
+      margin-bottom: 15px;
+      color: #00a0e3;
+      font-size: 1.6rem;
+      border-bottom: 2px solid #00a0e3;
+      padding-bottom: 6px;
+      display: inline-block;
+    }
+    section p {
+      margin-bottom: 10px;
+    }
+    .services-grid, .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .card {
+      border: 1px solid #eee;
+      border-radius: 6px;
+      padding: 15px;
+      background: #fafafa;
+    }
+    .card h3 {
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #00a0e3;
+      margin: 10px 0;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #fff;
+      background: #00a0e3;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-left: 6px;
+    }
+    .about-flex {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 20px;
+      align-items: center;
+    }
+    .about-flex img {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+      object-fit: cover;
+    }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .stat {
+      background: #f0fbff;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.1rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+      display: block;
+      height: 140px;
+    }
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 25px;
+    }
+    .contact-details p {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .contact-details strong {
+      display: inline-block;
+      width: 80px;
+    }
+    .hours {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    .hours div {
+      display: flex;
+      justify-content: space-between;
+    }
+    form label {
+      display: block;
+      font-size: 0.9rem;
+      margin: 8px 0 3px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+    form textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    form button {
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #777;
+      padding: 15px 10px 30px;
+    }
+    @media (max-width: 768px) {
+      header {
+        padding: 60px 15px;
+      }
+      header h1 {
+        font-size: 1.9rem;
+      }
+      nav .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .about-flex, .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <div class="content">
+      <h1>Phola Sparkle Car Wash</h1>
+      <p>Fast, affordable, and eco-friendly car wash services for your local community.</p>
+      <a href="#contact" class="btn-primary">Book An Appointment</a>
+    </div>
+  </header>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Phola Sparkle</div>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <section id="services">
+      <h2>Our Services</h2>
+      <p>Whether you need a quick rinse or a full detail, we have a package that fits your car and your budget.</p>
+      <div class="services-grid">
+        <div class="card">
+          <h3>Express Wash</h3>
+          <p>Exterior wash, spot-free rinse, and air dry for drivers on the go.</p>
+        </div>
+        <div class="card">
+          <h3>Deluxe Wash</h3>
+          <p>Exterior wash, wheel clean, tire shine, and interior vacuum.</p>
+        </div>
+        <div class="card">
+          <h3>Ultimate Detail</h3>
+          <p>Complete interior and exterior detail, wax, windows, and upholstery wipe-down.</p>
+        </div>
+        <div class="card">
+          <h3>Monthly Memberships</h3>
+          <p>Unlimited washes for one low monthly price. Perfect for regular drivers and families.</p>
+        </div>
+      </div>
+    </section>
+    <section id="pricing">
+      <h2>Pricing</h2>
+      <p>Transparent pricing with no hidden fees. Pay at the counter or online when you book.</p>
+      <div class="pricing-grid">
+        <div class="card">
+          <h3>Basic Wash</h3>
+          <div class="price">R80</div>
+          <p>Exterior wash, rinse, and dry.</p>
+        </div>
+        <div class="card">
+          <h3>Deluxe Wash<span class="badge">Popular</span></h3>
+          <div class="price">R150</div>
+          <p>Basic wash plus wheel clean, wax, and interior vacuum.</p>
+        </div>
+        <div class="card">
+          <h3>Ultimate Detail</h3>
+          <div class="price">R300</div>
+          <p>Full interior and exterior detailing, including hand wax and shampoo.</p>
+        </div>
+        <div class="card">
+          <h3>Monthly Plan</h3>
+          <div class="price">From R250/mo</div>
+          <p>Unlimited basic washes for one vehicle each month.</p>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <h2>About Us</h2>
+      <div class="about-flex">
+        <div>
+          <p>Phola Sparkle Car Wash is a locally owned business dedicated to keeping our neighbors’ cars clean and shiny year-round.</p>
+          <p>We use eco-friendly soaps, recycled water systems, and modern equipment to give your vehicle a safe, effective clean.</p>
+          <div class="stats">
+            <div class="stat">
+              <strong>0+ Years</strong>
+              Starting serving the local community
+            </div>
+            <div class="stat">
+              <strong>4.8 / 5</strong>
+              Average customer rating
+            </div>
+            <div class="stat">
+              <strong>Eco-Friendly</strong>
+              Biodegradable products
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src="car-wash-team.jpg" alt="Sparkle Shine Car Wash team at work" />
+        </div>
+      </div>
+    </section>
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <p>See the difference a professional wash can make.</p>
+      <div class="gallery-grid">
+        <img src="before-after-1.jpg" alt="Before and after car wash example 1" />
+        <img src="before-after-2.jpg" alt="Before and after car wash example 2" />
+        <img src="interior-cleaning.jpg" alt="Interior cleaning" />
+        <img src="car-wash-bay.jpg" alt="Car wash bay" />
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contact & Location</h2>
+      <div class="contact-wrapper">
+        <div class="contact-details">
+          <p><strong>Phone:</strong> (076) 574-4633</p>
+          <p><strong>Email:</strong> Pholasparklecarwash@gmail.com</p>
+          <p><strong>Address:</strong> Mobile Agents, call or Whatsapp, 0765744633</p>
+          <div class="hours">
+            <strong>Hours</strong>
+            <div><span>Mon - Fri</span><span>8:00 am - 17:00 pm</span></div>
+            <div><span>Saturday</span><span>9:00 am - 16:00 pm</span></div>
+            <div><span>Sunday</span><span>Closed</span></div>
+          </div>
+          <div style="margin-top:12px; font-size:0.9rem;">
+            <strong>Call-Up Welcome</strong><br />
+             Appointment needed for basic and deluxe washes. For full details, please book ahead.
+          </div>
+        </div>
+        <div>
+          <form>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            <label for="service">Service</label>
+            <input id="service" name="service" type="text" placeholder="e.g., Deluxe Wash, Ultimate Detail" />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Preferred date and time, questions, or special requests"></textarea>
+            <button type="submit" class="btn-primary">Send Request</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; <span id="year"></span> Phola Sparkle Car Wash. All rights reserved.
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
